@@ -33,14 +33,20 @@ cd React-JsSIP-Example
 npm install
 ```
 
-3. Set up the required environment variables (in `.env` file):
+3. Create `.env` file in the project root and set up the required environment variables:
 ```env
-REACT_APP_ASTERISK_SERVER=your-asterisk-server
-REACT_APP_ASTERISK_SOCKET_SERVER=your-websocket-server
+REACT_APP_WEBSOCKET_URL=wss://your-asterisk-server:8089/ws
+REACT_APP_SIP_DISPLAY_NAME=Your Name
 REACT_APP_SIP_USERNAME=your-username
 REACT_APP_SIP_PASSWORD=your-password
-REACT_APP_STUN_SERVER=your-stun-server
-REACT_APP_TURN_SERVER=your-turn-server
+REACT_APP_SIP_DOMAIN=your-asterisk-domain
+REACT_APP_TARGET_NUMBER=target-number
+REACT_APP_STUN_SERVER=stun:your-stun-server:3478
+REACT_APP_STUN_USERNAME=stun-username
+REACT_APP_STUN_PASSWORD=stun-password
+REACT_APP_TURN_SERVER=turn:your-turn-server:3478
+REACT_APP_TURN_USERNAME=turn-username
+REACT_APP_TURN_PASSWORD=turn-password
 ```
 
 4. Start the application:
@@ -48,76 +54,35 @@ REACT_APP_TURN_SERVER=your-turn-server
 npm start
 ```
 
-## Configuration
-### SIP Server Settings
-Update the following values in `App.js` according to your SIP server:
-```javascript
-let StartSipModel = new JsSIP.UA({
-    sockets: [
-        new JsSIP.WebSocketInterface("wss://<asterisk-socket-server>:8089/ws")
-    ],
-    uri: "sip:<sip-username>@<asterisk-server>",
-    password: "<sip-password>",
-    // ... other settings
-});
-```
-
-### ICE Server Settings
-Update the STUN/TURN server configuration according to your servers:
-```javascript
-const iceServer = [
-    {
-        urls: ['stun:stun.l.google.com:19302']
-    },
-    {
-        urls: ["stun:<stun-server>:<stun-port>"],
-        username: "username",
-        credential: "password"
-    },
-    {
-        urls: ["turn:<turn-server>:<turn-port>"],
-        username: "username",
-        credential: "password"
-    }
-];
-```
-
 ## Usage
-The application supports four basic functions:
-1. **Making Calls**: Click the "CALL" button to make a call to the specified SIP address.
-2. **Ending Calls**: Use the "END" button to terminate the active call.
-3. **Answering Calls**: Use the "ANSWER" button to accept incoming calls.
-4. **Rejecting Calls**: Use the "REJECT" button to reject incoming calls.
+The application provides four main functions through its user interface:
 
-## Event Listeners
-The application monitors and logs the following SIP events to the console:
-- Connecting
-- Connected
-- Disconnected
-- Registered
-- Unregistered
-- Registration Failed
-- New RTC Session
+1. **Making Calls**: 
+   - Click the "CALL" button to make a call
+   - Button is disabled when not connected to SIP server
 
-## WebRTC Statistics
-The application collects WebRTC statistics for active calls:
-- ICE connection status
-- General call statistics
+2. **Ending Calls**: 
+   - Click the "END" button to terminate active call
+   - Button is disabled when no active call exists
 
-## Debugging
-All important events are logged to the console. Check the browser developer tools console for troubleshooting.
+3. **Answering Calls**: 
+   - Click the "ANSWER" button to accept incoming calls
+   - Button is disabled when no incoming call exists
+
+4. **Rejecting Calls**: 
+   - Click the "REJECT" button to reject incoming calls
+   - Button is disabled when no incoming call exists
+
+## Connection Status
+The application displays the current connection status which can be:
+- disconnected
+- connecting
+- connected
 
 ## Security Notes
-- Use environment variables instead of storing sensitive information (username, password, server addresses, etc.) directly in the code
-- Use secure WebSocket connection (WSS) in production environment
-- Use strong credentials for TURN server
-
-## Contributing
-1. Fork this repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Create a Pull Request
+- All sensitive information is stored in environment variables
+- Uses secure WebSocket connection (WSS)
+- Supports STUN/TURN server authentication
 
 ## License
 This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
@@ -127,7 +92,7 @@ Project Link: [https://github.com/wwwakcan/React-JsSIP-Example](https://github.c
 
 ---
 
-# Turkish
+# Türkçe
 
 Bu proje, React ve JsSIP kullanarak oluşturulmuş bir WebRTC tabanlı SIP (Session Initiation Protocol) istemcisidir. Temel VoIP işlevlerini (arama yapma, gelen aramaları yanıtlama, reddetme vb.) destekler.
 
@@ -158,14 +123,20 @@ cd React-JsSIP-Example
 npm install
 ```
 
-3. Gerekli ortam değişkenlerini ayarlayın (`.env` dosyasında):
+3. Proje kök dizininde `.env` dosyası oluşturun ve gerekli ortam değişkenlerini ayarlayın:
 ```env
-REACT_APP_ASTERISK_SERVER=your-asterisk-server
-REACT_APP_ASTERISK_SOCKET_SERVER=your-websocket-server
+REACT_APP_WEBSOCKET_URL=wss://your-asterisk-server:8089/ws
+REACT_APP_SIP_DISPLAY_NAME=Your Name
 REACT_APP_SIP_USERNAME=your-username
 REACT_APP_SIP_PASSWORD=your-password
-REACT_APP_STUN_SERVER=your-stun-server
-REACT_APP_TURN_SERVER=your-turn-server
+REACT_APP_SIP_DOMAIN=your-asterisk-domain
+REACT_APP_TARGET_NUMBER=target-number
+REACT_APP_STUN_SERVER=stun:your-stun-server:3478
+REACT_APP_STUN_USERNAME=stun-username
+REACT_APP_STUN_PASSWORD=stun-password
+REACT_APP_TURN_SERVER=turn:your-turn-server:3478
+REACT_APP_TURN_USERNAME=turn-username
+REACT_APP_TURN_PASSWORD=turn-password
 ```
 
 4. Uygulamayı başlatın:
@@ -173,76 +144,35 @@ REACT_APP_TURN_SERVER=your-turn-server
 npm start
 ```
 
-## Yapılandırma
-### SIP Sunucu Ayarları
-`App.js` içerisinde aşağıdaki değerleri kendi SIP sunucunuza göre güncelleyin:
-```javascript
-let StartSipModel = new JsSIP.UA({
-    sockets: [
-        new JsSIP.WebSocketInterface("wss://<asterisk-socket-server>:8089/ws")
-    ],
-    uri: "sip:<sip-username>@<asterisk-server>",
-    password: "<sip-password>",
-    // ... diğer ayarlar
-});
-```
-
-### ICE Sunucu Ayarları
-STUN/TURN sunucu yapılandırmasını kendi sunucularınıza göre güncelleyin:
-```javascript
-const iceServer = [
-    {
-        urls: ['stun:stun.l.google.com:19302']
-    },
-    {
-        urls: ["stun:<stun-server>:<stun-port>"],
-        username: "username",
-        credential: "password"
-    },
-    {
-        urls: ["turn:<turn-server>:<turn-port>"],
-        username: "username",
-        credential: "password"
-    }
-];
-```
-
 ## Kullanım
-Uygulama dört temel işlevi destekler:
-1. **Arama Yapma**: "CALL" butonuna tıklayarak belirtilen SIP adresine arama yapabilirsiniz.
-2. **Aramayı Sonlandırma**: "END" butonu ile aktif aramayı sonlandırabilirsiniz.
-3. **Aramayı Yanıtlama**: "ANSWER" butonu ile gelen aramaları kabul edebilirsiniz.
-4. **Aramayı Reddetme**: "REJECT" butonu ile gelen aramaları reddedebilirsiniz.
+Uygulama kullanıcı arayüzü üzerinden dört temel işlev sunar:
 
-## Olay Dinleyiciler
-Uygulama, aşağıdaki SIP olaylarını izler ve konsola bilgi yazdırır:
-- Bağlanıyor (connecting)
-- Bağlandı (connected)
-- Bağlantı Kesildi (disconnected)
-- Kayıt Oldu (registered)
-- Kayıt Silindi (unregistered)
-- Kayıt Başarısız (registrationFailed)
-- Yeni RTC Oturumu (newRTCSession)
+1. **Arama Yapma**: 
+   - "CALL" butonuna tıklayarak arama yapabilirsiniz
+   - SIP sunucusuna bağlı değilken buton devre dışıdır
 
-## WebRTC İstatistikleri
-Uygulama, aktif çağrılar için WebRTC istatistiklerini toplar:
-- ICE bağlantı durumu
-- Genel çağrı istatistikleri
+2. **Aramayı Sonlandırma**: 
+   - "END" butonu ile aktif aramayı sonlandırabilirsiniz
+   - Aktif arama yokken buton devre dışıdır
 
-## Hata Ayıklama
-Tüm önemli olaylar konsola kaydedilir. Sorun giderme için tarayıcı geliştirici araçlarının konsolunu kontrol edin.
+3. **Aramayı Yanıtlama**: 
+   - "ANSWER" butonu ile gelen aramaları kabul edebilirsiniz
+   - Gelen arama yokken buton devre dışıdır
+
+4. **Aramayı Reddetme**: 
+   - "REJECT" butonu ile gelen aramaları reddedebilirsiniz
+   - Gelen arama yokken buton devre dışıdır
+
+## Bağlantı Durumu
+Uygulama mevcut bağlantı durumunu gösterir:
+- disconnected (bağlantı kesildi)
+- connecting (bağlanıyor)
+- connected (bağlandı)
 
 ## Güvenlik Notları
-- Hassas bilgileri (kullanıcı adı, şifre, sunucu adresleri vb.) doğrudan kodda saklamak yerine environment variable kullanın
-- Production ortamında güvenli WebSocket bağlantısı (WSS) kullanın
-- TURN sunucusu için güçlü kimlik bilgileri kullanın
-
-## Katkıda Bulunma
-1. Bu repo'yu fork edin
-2. Feature branch'inizi oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'feat: Add amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Bir Pull Request oluşturun
+- Tüm hassas bilgiler ortam değişkenlerinde saklanır
+- Güvenli WebSocket bağlantısı (WSS) kullanır
+- STUN/TURN sunucu kimlik doğrulamasını destekler
 
 ## Lisans
 Bu proje [MIT](https://choosealicense.com/licenses/mit/) lisansı altında lisanslanmıştır.
