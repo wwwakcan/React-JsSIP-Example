@@ -1,181 +1,70 @@
-# React JsSIP Example
+# Getting Started with Create React App
 
-[English](#english) | [Türkçe](#turkish)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# English
+## Available Scripts
 
-This project is a WebRTC-based SIP (Session Initiation Protocol) client built using React and JsSIP. It supports basic VoIP functionalities (making calls, answering incoming calls, rejecting calls, etc.).
+In the project directory, you can run:
 
-## Features
-- 📞 Make voice calls
-- 📱 Answer/reject incoming calls
-- 🔄 End active calls
-- 🔊 Audio-only support (no video support)
-- ⚡ Low latency with WebRTC technology
-- 🔒 STUN/TURN server support
+### `npm start`
 
-## Requirements
-- Node.js (>= 14.0.0)
-- React (>= 16.8.0)
-- JsSIP library
-- WebRTC-enabled modern web browser
-- Running Asterisk server
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-## Installation
-1. Clone the project:
-```bash
-git clone https://github.com/wwwakcan/React-JsSIP-Example.git
-cd React-JsSIP-Example
-```
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-2. Install dependencies:
-```bash
-npm install
-```
+### `npm test`
 
-3. Create `.env` file in the project root and set up the required environment variables:
-```env
-REACT_APP_WEBSOCKET_URL=wss://your-asterisk-server:8089/ws
-REACT_APP_SIP_DISPLAY_NAME=Your Name
-REACT_APP_SIP_USERNAME=your-username
-REACT_APP_SIP_PASSWORD=your-password
-REACT_APP_SIP_DOMAIN=your-asterisk-domain
-REACT_APP_TARGET_NUMBER=target-number
-REACT_APP_STUN_SERVER=stun:your-stun-server:3478
-REACT_APP_STUN_USERNAME=stun-username
-REACT_APP_STUN_PASSWORD=stun-password
-REACT_APP_TURN_SERVER=turn:your-turn-server:3478
-REACT_APP_TURN_USERNAME=turn-username
-REACT_APP_TURN_PASSWORD=turn-password
-```
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-4. Start the application:
-```bash
-npm start
-```
+### `npm run build`
 
-## Usage
-The application provides four main functions through its user interface:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. **Making Calls**: 
-   - Click the "CALL" button to make a call
-   - Button is disabled when not connected to SIP server
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-2. **Ending Calls**: 
-   - Click the "END" button to terminate active call
-   - Button is disabled when no active call exists
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-3. **Answering Calls**: 
-   - Click the "ANSWER" button to accept incoming calls
-   - Button is disabled when no incoming call exists
+### `npm run eject`
 
-4. **Rejecting Calls**: 
-   - Click the "REJECT" button to reject incoming calls
-   - Button is disabled when no incoming call exists
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-## Connection Status
-The application displays the current connection status which can be:
-- disconnected
-- connecting
-- connected
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## Security Notes
-- All sensitive information is stored in environment variables
-- Uses secure WebSocket connection (WSS)
-- Supports STUN/TURN server authentication
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## License
-This project is licensed under the [MIT](https://choosealicense.com/licenses/mit/) License.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Contact
-Project Link: [https://github.com/wwwakcan/React-JsSIP-Example](https://github.com/wwwakcan/React-JsSIP-Example)
+## Learn More
 
----
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# Türkçe
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-Bu proje, React ve JsSIP kullanarak oluşturulmuş bir WebRTC tabanlı SIP (Session Initiation Protocol) istemcisidir. Temel VoIP işlevlerini (arama yapma, gelen aramaları yanıtlama, reddetme vb.) destekler.
+### Code Splitting
 
-## Özellikler
-- 📞 Sesli arama yapabilme
-- 📱 Gelen aramaları yanıtlama/reddetme
-- 🔄 Aktif aramaları sonlandırma
-- 🔊 Yalnızca ses desteği (video desteği yok)
-- ⚡ WebRTC teknolojisi ile düşük gecikme
-- 🔒 STUN/TURN sunucu desteği
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Gereksinimler
-- Node.js (>= 14.0.0)
-- React (>= 16.8.0)
-- JsSIP kütüphanesi
-- WebRTC destekli modern bir web tarayıcısı
-- Çalışan bir Asterisk sunucusu
+### Analyzing the Bundle Size
 
-## Kurulum
-1. Projeyi klonlayın:
-```bash
-git clone https://github.com/wwwakcan/React-JsSIP-Example.git
-cd React-JsSIP-Example
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-2. Bağımlılıkları yükleyin:
-```bash
-npm install
-```
+### Making a Progressive Web App
 
-3. Proje kök dizininde `.env` dosyası oluşturun ve gerekli ortam değişkenlerini ayarlayın:
-```env
-REACT_APP_WEBSOCKET_URL=wss://your-asterisk-server:8089/ws
-REACT_APP_SIP_DISPLAY_NAME=Your Name
-REACT_APP_SIP_USERNAME=your-username
-REACT_APP_SIP_PASSWORD=your-password
-REACT_APP_SIP_DOMAIN=your-asterisk-domain
-REACT_APP_TARGET_NUMBER=target-number
-REACT_APP_STUN_SERVER=stun:your-stun-server:3478
-REACT_APP_STUN_USERNAME=stun-username
-REACT_APP_STUN_PASSWORD=stun-password
-REACT_APP_TURN_SERVER=turn:your-turn-server:3478
-REACT_APP_TURN_USERNAME=turn-username
-REACT_APP_TURN_PASSWORD=turn-password
-```
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-4. Uygulamayı başlatın:
-```bash
-npm start
-```
+### Advanced Configuration
 
-## Kullanım
-Uygulama kullanıcı arayüzü üzerinden dört temel işlev sunar:
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-1. **Arama Yapma**: 
-   - "CALL" butonuna tıklayarak arama yapabilirsiniz
-   - SIP sunucusuna bağlı değilken buton devre dışıdır
+### Deployment
 
-2. **Aramayı Sonlandırma**: 
-   - "END" butonu ile aktif aramayı sonlandırabilirsiniz
-   - Aktif arama yokken buton devre dışıdır
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-3. **Aramayı Yanıtlama**: 
-   - "ANSWER" butonu ile gelen aramaları kabul edebilirsiniz
-   - Gelen arama yokken buton devre dışıdır
+### `npm run build` fails to minify
 
-4. **Aramayı Reddetme**: 
-   - "REJECT" butonu ile gelen aramaları reddedebilirsiniz
-   - Gelen arama yokken buton devre dışıdır
-
-## Bağlantı Durumu
-Uygulama mevcut bağlantı durumunu gösterir:
-- disconnected (bağlantı kesildi)
-- connecting (bağlanıyor)
-- connected (bağlandı)
-
-## Güvenlik Notları
-- Tüm hassas bilgiler ortam değişkenlerinde saklanır
-- Güvenli WebSocket bağlantısı (WSS) kullanır
-- STUN/TURN sunucu kimlik doğrulamasını destekler
-
-## Lisans
-Bu proje [MIT](https://choosealicense.com/licenses/mit/) lisansı altında lisanslanmıştır.
-
-## İletişim
-Proje Linki: [https://github.com/wwwakcan/React-JsSIP-Example](https://github.com/wwwakcan/React-JsSIP-Example)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
