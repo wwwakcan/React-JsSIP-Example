@@ -1,5 +1,5 @@
 # React JsSIP Example
-[English](#english) | [Türkçe](#turkish)
+[English](#english) | [Türkçe](#Türkçe)
 # English
 This project is a WebRTC-based SIP (Session Initiation Protocol) client built using React and JsSIP. It supports basic VoIP functionalities (making calls, answering incoming calls, rejecting calls, etc.).
 ## Features
