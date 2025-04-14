@@ -15,7 +15,7 @@ const ICE_SERVERS = [
         urls: [process.env.REACT_APP_TURN_SERVER],
         username: process.env.REACT_APP_TURN_USERNAME,
         credential: process.env.REACT_APP_TURN_PASSWORD
-    }
+    },
 ];
 
 // SIP Configuration
@@ -29,13 +29,31 @@ const SIP_CONFIG = {
     registrar_server: process.env.REACT_APP_SIP_DOMAIN,
     contact_uri: `sip:${process.env.REACT_APP_SIP_USERNAME}@${process.env.REACT_APP_SIP_DOMAIN}`,
     authorization_user: process.env.REACT_APP_SIP_USERNAME,
-    session_timers: true,
-    register: true,
-    use_preloaded_route: true,
     pcConfig: {
-        rtcpMuxPolicy: "negotiate",
-        iceServers: ICE_SERVERS
-    }
+        iceServers: ICE_SERVERS,
+        iceTransportPolicy: "relay",
+        iceCandidatePoolSize: 1,
+        rtcpMuxPolicy: "require",
+        dtlsRole: "auto",
+        bundlePolicy: "balanced",
+        sdpSemantics: "unified-plan"
+    },
+    mediaConstraints: {
+        audio: true,
+        video: false
+    },
+    rtcOfferConstraints: {
+        offerToReceiveAudio: 1,
+        offerToReceiveVideo: 0
+    },
+    register: true,
+    register_expires: 600,
+    connection_recovery_min_interval: 2,
+    connection_recovery_max_interval: 30,
+    use_preloaded_route: false,
+    no_answer_timeout: 60,
+    session_timers: true,
+    session_timers_refresh_method: 'update'
 };
 
 // Common session options
